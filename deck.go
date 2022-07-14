@@ -47,11 +47,11 @@ func (d deck) saveToFile(filename string) error {
 	return nil
 }
 
-func deckFromFile(filename string) ([]string, error) {
+func deckFromFile(filename string) (deck, error) {
 	card, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
-		return []string{}, err
+		return deck{}, err
 	}
 	return strings.Split(string(card), ","), nil
 }
