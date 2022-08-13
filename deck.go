@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"strings"
+	"time"
 )
 
 type deck []string
@@ -58,12 +59,11 @@ func deckFromFile(filename string) (deck, error) {
 }
 
 func (d deck) randomizeDeck() deck {
-	for i, _ := range d {
-
-		x := d[i]
+	rand.Seed(time.Now().UnixNano())
+	for i := range d {
 		randomPosition := rand.Intn(len(d))
-		d[i] = d[randomPosition]
-		d[randomPosition] = x
+		d[i], d[randomPosition] = d[randomPosition], d[i] //oneliner
+
 	}
 	return d
 }
