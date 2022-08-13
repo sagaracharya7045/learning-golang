@@ -53,5 +53,5 @@ func deckFromFile(filename string) (deck, error) {
 		log.Fatal(err)
 		return deck{}, err
 	}
-	return strings.Split(string(card), ","), nil
+	return deck(strings.Split(string(card), ",")), nil //converting byte to string with string()
 }

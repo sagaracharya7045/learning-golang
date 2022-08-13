@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 // func doesFileExist(filename string) {
 // 	fileName := ""
 // 	_, error := os.Stat(fileName)
@@ -19,5 +15,10 @@ func main() {
 	// cards.saveToFile("hello.txt")
 	// doesFileExist("hello.txt")
 	readcards, _ := deckFromFile("hello.txt")
-	fmt.Println(readcards)
+	// fmt.Println(readcards)
+	readcards.print()
 }
+
+// func main() {
+// 	fmt.Println("Hello world")
+// }
