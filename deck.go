@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"strings"
 )
 
@@ -54,4 +55,15 @@ func deckFromFile(filename string) (deck, error) {
 		return deck{}, err
 	}
 	return deck(strings.Split(string(card), ",")), nil //converting byte to string with string()
+}
+
+func (d deck) randomizeDeck() deck {
+	for i, _ := range d {
+
+		x := d[i]
+		randomPosition := rand.Intn(len(d))
+		d[i] = d[randomPosition]
+		d[randomPosition] = x
+	}
+	return d
 }

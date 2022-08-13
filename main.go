@@ -16,6 +16,7 @@ func main() {
 	// doesFileExist("hello.txt")
 	readcards, _ := deckFromFile("hello.txt")
 	// fmt.Println(readcards)
+	readcards.randomizeDeck()
 	readcards.print()
 }
 
