@@ -59,9 +59,11 @@ func deckFromFile(filename string) (deck, error) {
 }
 
 func (d deck) randomizeDeck() deck {
-	rand.Seed(time.Now().UnixNano())
+	source := rand.NewSource(time.Now().UnixNano()) //create a source
+	r := rand.New(source)                           //custom random number generator
+
 	for i := range d {
-		randomPosition := rand.Intn(len(d))
+		randomPosition := r.Intn(len(d))
 		d[i], d[randomPosition] = d[randomPosition], d[i] //oneliner
 
 	}
